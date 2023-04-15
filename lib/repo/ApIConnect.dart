@@ -18,7 +18,7 @@ class Connect {
           response: acountFromJson(ersponse.body),
         );
       }
-      return Failare(code: 100, errorResponse: 'status code = 200');
+      return Failare(code: 100, errorResponse: 'status code = 100');
     } on HttpException {
       return Failare(
         code: 101,

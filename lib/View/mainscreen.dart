@@ -1,13 +1,12 @@
-import 'dart:ui';
+import 'package:app1/View/UserScreen.dart';
 import 'package:app1/ViewModel/%D9%90AcountModeView.dart';
 import 'package:app1/model/Acount.dart';
-import 'package:app1/repo/ApIConnect.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:provider/provider.dart';
 
+import '../component/AccountList.dart';
 import '../component/Loading.dart';
+import '../component/user_scerrn_go.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -29,7 +28,7 @@ class MainScreenState extends State<MainScreen> {
         title: const Text('Conect Http Request'),
       ),
       body: Container(
-        child: Column(children: [
+        child: Column(children: <Widget>[
           const Padding(padding: EdgeInsets.all(10)),
           _ui(acountModelView),
         ]),
@@ -45,23 +44,8 @@ class MainScreenState extends State<MainScreen> {
         child: ListView.separated(
       itemBuilder: (context, index) {
         Acount acount = acountModelView.list[index];
-        return Container(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  acount.name,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                  ),
-                ),
-                Text(
-                  acount.email,
-                  style: TextStyle(color: Colors.black),
-                ),
-              ]),
+        return Accountlist(
+          acount: acount,
         );
       },
       separatorBuilder: (context, index) => Divider(),
